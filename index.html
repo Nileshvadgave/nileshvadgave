@@ -72,31 +72,70 @@
         .persona-container {
             flex: 1;
             max-width: 280px;
+            height: 400px; /* Fixed height for consistency */
             background: rgba(255, 255, 255, 0.95);
             color: #1f2937;
-            padding: 15px;
+            padding: 0;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         .persona-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .content {
-            display: flex;
-            align-items: center;
-            gap: 10%;
+        .persona-image-wrapper {
+            position: relative;
+            height: 55%; /* 55% of container for image */
+            overflow: hidden;
         }
-        .content img {
-            width: 35%;
-            height: auto;
-            border-radius: 8px;
+        .persona-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the 55% height */
+            border-radius: 8px 8px 0 0; /* Rounded top corners */
         }
-        .content p {
-            width: 55%;
+        .persona-image-wrapper h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* For readability */
+            width: 100%;
+            padding: 0 10px;
+        }
+        .persona-container.academic h2 {
+            font-family: 'Georgia', serif; /* Formal font for Academic */
+            font-size: 1.3rem;
+        }
+        .persona-container.entrepreneur h2 {
+            font-family: 'Roboto', sans-serif; /* Bold, modern font */
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #f5f2f2; /* Light for contrast */
+        }
+        .persona-container.development-professional h2 {
+            font-family: 'Arial', sans-serif; /* Professional, clean font */
+            font-size: 1.3rem;
+            color: #e0e0e0; /* Light gray for contrast */
+        }
+        .persona-container.artist h2 {
+            font-family: 'Playfair Display', serif; /* Creative, playful font */
+            font-size: 1.3rem;
+            color: #ffd700; /* Gold for vibrancy */
+        }
+        .persona-text {
+            height: 45%; /* 45% for text */
+            padding: 10px;
             font-size: 0.85rem;
             line-height: 1.4;
+            overflow-y: auto; /* Scroll if text overflows */
         }
         .detailed-section {
             background: rgba(255, 255, 255, 0.9);
@@ -249,31 +288,14 @@
             }
             .persona-container {
                 max-width: 100%;
+                height: 350px; /* Adjusted height for mobile */
             }
-            .content {
-                flex-direction: column;
-                gap: 15px;
+            .persona-image-wrapper h2 {
+                font-size: 1.1rem; /* Smaller font for mobile */
             }
-            .content img {
-                width: 100%;
-                max-width: 200px;
-            }
-            .content p {
-                width: 100%;
-            }
-            .sketches-container, .development-container {
-                flex-direction: column;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
-            .sketches-container img, .development-container img {
-                width: 100%;
-                max-width: none;
-                height: 200px;
-                object-fit: contain;
-                background: #fff;
-                padding: 5px;
-                cursor: pointer;
+            .persona-text {
+                font-size: 0.8rem;
+                padding: 8px;
             }
             .detailed-section .theatre-container {
                 flex-direction: column;
@@ -288,6 +310,20 @@
                 width: 100%;
                 max-width: none;
                 height: 200px;
+            }
+            .sketches-container, .development-container {
+                flex-direction: column;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .sketches-container img, .development-container img {
+                width: 100%;
+                max-width: none;
+                height: 200px;
+                object-fit: contain;
+                background: #fff;
+                padding: 5px;
+                cursor: pointer;
             }
             header h1 {
                 font-size: 2rem;
@@ -320,31 +356,39 @@
                 </div>
             </div>
             <div class="personas">
-                <div class="persona-container" onclick="showSection('Academic')" role="button" tabindex="0">
-                    <h2>Academic</h2>
-                    <div class="content">
+                <div class="persona-container academic" onclick="showSection('Academic')" role="button" tabindex="0">
+                    <div class="persona-image-wrapper">
                         <img src="images/Researcher_4.jpg" alt="Academic" />
+                        <h2>Academic</h2>
+                    </div>
+                    <div class="persona-text">
                         <p>Pioneering climate-smart solutions to optimize storage technologies for perishable goods, reducing value chain losses and enhancing food security through innovative research at IIT Bombay.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('Entrepreneur')" role="button" tabindex="0">
-                    <h2>Entrepreneur</h2>
-                    <div class="content">
+                <div class="persona-container entrepreneur" onclick="showSection('Entrepreneur')" role="button" tabindex="0">
+                    <div class="persona-image-wrapper">
                         <img src="images/IMG-20200702-WA0001.jpg" alt="Entrepreneur" />
+                        <h2>Entrepreneur</h2>
+                    </div>
+                    <div class="persona-text">
                         <p>Leading ventures like O-Zone LLP and Circular Kheti, driving innovation in sustainable agriculture and waste reduction to enhance farmers’ incomes and promote environmental resilience.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('Development Professional')" role="button" tabindex="0">
-                    <h2>Development Professional</h2>
-                    <div class="content">
-                        <img src="images/DP_1.jpg" alt="DP" />
+                <div class="persona-container development-professional" onclick="showSection('Development Professional')" role="button" tabindex="0">
+                    <div class="persona-image-wrapper">
+                        <img src="images/DP_1.jpg" alt="Development Professional" />
+                        <h2>Development Professional</h2>
+                    </div>
+                    <div class="persona-text">
                         <p>Trained Professional with experience to work in social sector pertaining to the developemnt of bottom 80% of the Indian Population living in rural and semi-rural areas.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('artist')" role="button" tabindex="0">
-                    <h2>Artist</h2>
-                    <div class="content">
+                <div class="persona-container artist" onclick="showSection('artist')" role="button" tabindex="0">
+                    <div class="persona-image-wrapper">
                         <img src="images/AboutSection.jpg" alt="Artist" />
+                        <h2>Artist</h2>
+                    </div>
+                    <div class="persona-text">
                         <p>Exploring sustainability and human values through theatre, poetry, and sketches, with performances like “Saarang Uwaach” sparking dialogue on social and environmental issues.</p>
                     </div>
                 </div>
