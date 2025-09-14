@@ -101,7 +101,7 @@
         }
         .persona-header {
             height: 23px; /* 110% of 1.3rem (20.8px * 1.1) */
-            background: #fff; /* White strip */
+            background: rgba(255, 255, 255, 0.8); /* White strip with 80% opacity */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -265,7 +265,6 @@
             padding: 20px;
             font-size: 0.9rem;
         }
-        /* REPLACED SECTION START: Media query for personas */
         @media (max-width: 768px) {
             .personas {
                 flex-direction: column;
@@ -277,6 +276,7 @@
             }
             .persona-header {
                 height: 19.8px; /* 110% of 1.1rem (17.6px * 1.1) */
+                background: rgba(255, 255, 255, 0.8); /* Maintain transparency */
             }
             .persona-header h2 {
                 font-size: 1.1rem; /* Smaller font for mobile */
@@ -321,7 +321,6 @@
                 font-size: 1rem;
             }
         }
-        /* REPLACED SECTION END */
     </style>
 </head>
 <body>
@@ -345,7 +344,6 @@
                     </a>
                 </div>
             </div>
-            <!-- REPLACED SECTION START: Persona container HTML -->
             <div class="personas">
                 <div class="persona-container" onclick="showSection('Academic')" role="button" tabindex="0">
                     <div class="persona-image-wrapper">
@@ -392,7 +390,6 @@
                     </div>
                 </div>
             </div>
-            <!-- REPLACED SECTION END -->
         </div>
         <footer>
             <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
