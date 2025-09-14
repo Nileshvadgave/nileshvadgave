@@ -63,6 +63,7 @@
         .social-links a:hover {
             text-decoration: underline;
         }
+        /* REPLACED SECTION START: Persona container styles */
         .personas {
             display: flex;
             justify-content: space-between;
@@ -98,45 +99,28 @@
             object-fit: cover; /* Fill the 55% height */
             border-radius: 8px 8px 0 0; /* Rounded top corners */
         }
-        .persona-image-wrapper h2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .persona-header {
+            height: 23px; /* 110% of 1.3rem (20.8px * 1.1) */
+            background: #fff; /* White strip */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .persona-header h2 {
+            font-family: 'Inter', sans-serif; /* Match document font */
+            font-size: 1.3rem;
             margin: 0;
             text-align: center;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* For readability */
-            width: 100%;
-            padding: 0 10px;
-        }
-        .persona-container.academic h2 {
-            font-family: 'Georgia', serif; /* Formal font for Academic */
-            font-size: 1.3rem;
-        }
-        .persona-container.entrepreneur h2 {
-            font-family: 'Roboto', sans-serif; /* Bold, modern font */
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #f5f2f2; /* Light for contrast */
-        }
-        .persona-container.development-professional h2 {
-            font-family: 'Arial', sans-serif; /* Professional, clean font */
-            font-size: 1.3rem;
-            color: #e0e0e0; /* Light gray for contrast */
-        }
-        .persona-container.artist h2 {
-            font-family: 'Playfair Display', serif; /* Creative, playful font */
-            font-size: 1.3rem;
-            color: #ffd700; /* Gold for vibrancy */
+            color: #1f2937; /* Match container text color */
         }
         .persona-text {
-            height: 45%; /* 45% for text */
+            height: calc(45% - 23px); /* 45% minus header height */
             padding: 10px;
             font-size: 0.85rem;
             line-height: 1.4;
             overflow-y: auto; /* Scroll if text overflows */
         }
+        /* REPLACED SECTION END */
         .detailed-section {
             background: rgba(255, 255, 255, 0.9);
             color: #1f2937;
@@ -281,6 +265,7 @@
             padding: 20px;
             font-size: 0.9rem;
         }
+        /* REPLACED SECTION START: Media query for personas */
         @media (max-width: 768px) {
             .personas {
                 flex-direction: column;
@@ -290,10 +275,14 @@
                 max-width: 100%;
                 height: 350px; /* Adjusted height for mobile */
             }
-            .persona-image-wrapper h2 {
+            .persona-header {
+                height: 19.8px; /* 110% of 1.1rem (17.6px * 1.1) */
+            }
+            .persona-header h2 {
                 font-size: 1.1rem; /* Smaller font for mobile */
             }
             .persona-text {
+                height: calc(45% - 19.8px); /* Adjust for header height */
                 font-size: 0.8rem;
                 padding: 8px;
             }
@@ -332,6 +321,7 @@
                 font-size: 1rem;
             }
         }
+        /* REPLACED SECTION END */
     </style>
 </head>
 <body>
@@ -355,37 +345,46 @@
                     </a>
                 </div>
             </div>
+            <!-- REPLACED SECTION START: Persona container HTML -->
             <div class="personas">
-                <div class="persona-container academic" onclick="showSection('Academic')" role="button" tabindex="0">
+                <div class="persona-container" onclick="showSection('Academic')" role="button" tabindex="0">
                     <div class="persona-image-wrapper">
                         <img src="images/Researcher_4.jpg" alt="Academic" />
+                    </div>
+                    <div class="persona-header">
                         <h2>Academic</h2>
                     </div>
                     <div class="persona-text">
                         <p>Pioneering climate-smart solutions to optimize storage technologies for perishable goods, reducing value chain losses and enhancing food security through innovative research at IIT Bombay.</p>
                     </div>
                 </div>
-                <div class="persona-container entrepreneur" onclick="showSection('Entrepreneur')" role="button" tabindex="0">
+                <div class="persona-container" onclick="showSection('Entrepreneur')" role="button" tabindex="0">
                     <div class="persona-image-wrapper">
                         <img src="images/IMG-20200702-WA0001.jpg" alt="Entrepreneur" />
+                    </div>
+                    <div class="persona-header">
                         <h2>Entrepreneur</h2>
                     </div>
                     <div class="persona-text">
                         <p>Leading ventures like O-Zone LLP and Circular Kheti, driving innovation in sustainable agriculture and waste reduction to enhance farmers’ incomes and promote environmental resilience.</p>
                     </div>
                 </div>
-                <div class="persona-container development-professional" onclick="showSection('Development Professional')" role="button" tabindex="0">
+                <div class="persona-container" onclick="showSection('Development Professional')" role="button" tabindex="0">
                     <div class="persona-image-wrapper">
                         <img src="images/DP_1.jpg" alt="Development Professional" />
+                    </div>
+                    <div class="persona-header">
                         <h2>Development Professional</h2>
                     </div>
                     <div class="persona-text">
                         <p>Trained Professional with experience to work in social sector pertaining to the developemnt of bottom 80% of the Indian Population living in rural and semi-rural areas.</p>
                     </div>
                 </div>
-                <div class="persona-container artist" onclick="showSection('artist')" role="button" tabindex="0">
+                <div class="persona-container" onclick="showSection('artist')" role="button" tabindex="0">
                     <div class="persona-image-wrapper">
                         <img src="images/AboutSection.jpg" alt="Artist" />
+                    </div>
+                    <div class="persona-header">
                         <h2>Artist</h2>
                     </div>
                     <div class="persona-text">
@@ -393,6 +392,7 @@
                     </div>
                 </div>
             </div>
+            <!-- REPLACED SECTION END -->
         </div>
         <footer>
             <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
