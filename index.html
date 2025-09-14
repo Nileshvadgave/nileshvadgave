@@ -83,15 +83,6 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .personas .persona-container:not(:hover) {
-            opacity: 0.5;
-            filter: blur(2px);
-        }
-        .persona-container h2 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
         .content {
             display: flex;
             align-items: center;
@@ -489,6 +480,8 @@
     </div>
 
     <script>
+        let hasHovered = false; // Flag to track first hover
+
         function showSection(sectionId) {
             console.log('Navigating to section:', sectionId);
             document.querySelectorAll('.section').forEach(section => {
@@ -531,6 +524,7 @@
         // Handle hover effect for persona containers
         document.querySelectorAll('.persona-container').forEach(container => {
             container.addEventListener('mouseenter', () => {
+                hasHovered = true; // Set flag on first hover
                 document.querySelectorAll('.persona-container').forEach(other => {
                     if (other !== container) {
                         other.style.opacity = '0.5';
@@ -539,10 +533,12 @@
                 });
             });
             container.addEventListener('mouseleave', () => {
-                document.querySelectorAll('.persona-container').forEach(other => {
-                    other.style.opacity = '1';
-                    other.style.filter = 'none';
-                });
+                if (hasHovered) {
+                    document.querySelectorAll('.persona-container').forEach(other => {
+                        other.style.opacity = '1';
+                        other.style.filter = 'none';
+                    });
+                }
             });
             // Add keyboard support for accessibility
             container.addEventListener('keydown', (event) => {
@@ -558,4 +554,3 @@
     </script>
 </body>
 </html>
-
