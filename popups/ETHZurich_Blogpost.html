@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Improving Onion Shelf Life – A Transdisciplinary Approach</title>
   <style>
+    * {
+      box-sizing: border-box; /* Prevent overflow from padding/borders */
+    }
     body {
       font-family: Georgia, serif;
       background: #fdfdfd;
@@ -12,15 +15,16 @@
       margin: 0;
       line-height: 1.7;
       text-align: justify;
+      font-size: 1rem; /* Base font size for scalability */
     }
     header {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 3rem 1.5rem; /* Flexible padding */
       background: #fff;
       border-bottom: 1px solid #e0e0e0;
     }
     header h1 {
-      font-size: 2.0rem;
+      font-size: 2rem; /* Scales with screen size */
       margin-bottom: 0.4rem;
     }
     header p {
@@ -28,23 +32,35 @@
       color: #666;
     }
     main {
-      max-width: 800px;
-      margin: 3rem auto;
+      max-width: 1200px; /* Max width for desktops */
+      width: 90%; /* Responsive width */
+      margin: 2rem auto;
       padding: 0 1.5rem;
     }
     h2 {
-      margin-top: 3rem;
-      font-size: 2rem;
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
       border-left: 4px solid #d32f2f;
       padding-left: 0.6rem;
     }
     p {
       margin: 1.2rem 0;
+      font-size: 1rem;
     }
     img {
-      max-height: 400px;
+      width: 100%;
+      max-width: 100%; /* Prevent overflow */
+      height: auto; /* Maintain aspect ratio */
       border-radius: 6px;
       margin: 1rem 0;
+      object-fit: cover; /* Ensure proper scaling */
+      display: block; /* Prevent alignment issues */
+      loading: lazy; /* Improve performance */
+    }
+    .author-photo {
+      max-width: 200px; /* Specific size for author photo */
+      border-radius: 50%; /* Circular as per specific styling */
+      margin: 0 auto; /* Center the image */
     }
     figure {
       margin: 2rem 0;
@@ -56,7 +72,7 @@
       margin-top: 0.3rem;
     }
     footer {
-      margin-top: 4rem;
+      margin-top: 3rem;
       background: #f7f7f7;
       padding: 2rem 1.5rem;
       font-size: 0.95rem;
@@ -67,17 +83,74 @@
       color: #d32f2f;
       text-decoration: none;
     }
+    /* Media query for tablets (768px–1023px) */
+    @media (max-width: 1023px) {
+      main {
+        width: 95%;
+        padding: 0 1rem;
+      }
+      header {
+        padding: 2rem 1rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+      .author-photo {
+        max-width: 180px;
+      }
+    }
+    /* Media query for smartphones (≤ 767px) */
+    @media (max-width: 767px) {
+      main {
+        width: 95%;
+        padding: 0 0.75rem;
+      }
+      header {
+        padding: 1.5rem 0.75rem;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+        margin: 1rem 0;
+      }
+      img {
+        border-radius: 4px; /* Slightly smaller for mobile */
+      }
+      .author-photo {
+        max-width: 150px; /* Smaller for mobile */
+      }
+      footer {
+        padding: 1.5rem 0.75rem;
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Improving Onion Shelf Life – A Transdisciplinary Approach</h1>
     <p>By Nilesh Vadgave &nbsp;|&nbsp; foodsystemstories.org/blog</p>
   </header>
 
   <main>
-
     <p>India with a population of 1.35 billion is the second largest producer of onion in the world (~25 Million MT in 2021). Over 70% of the onions are grown in the western and southern parts of the country. This imbalance in supply chain along with the high perishability of onions make the value chain inefficient.</p>
 
     <p>For the year-round consumption, onion is stored in traditional open ventilated storage structures where reported storage losses are in the range between 40 to 60%. The government is investing a large sum of money to stabilize the market prices through the construction of large sized open storage structures. But, due to huge losses in traditional open structures, there is urgent need of affordable as well as scientific solution to this complex problem. With our research group at IIT Bombay, India, we addressed this issue by developing a storage technology with a transdisciplinary approach and came to very promising results.</p>
@@ -137,7 +210,7 @@
   <footer>
     <p><strong>About the Author</strong><br>
       <figure>
-      <img src="ETHimages/Nilesh Vadgave.jpg" alt="Photo of Nilesh Vadgave">
+      <img src="ETHimages/Nilesh Vadgave.jpg" class="author-photo" alt="Photo of Nilesh Vadgave">
       </figure>
       <strong>Nilesh Vadgave</strong> is a doctoral candidate, studying technology development and social entrepreneurship at the Indian Institute of Technology Bombay, India. He studied mechanical engineering for his bachelor and did his post graduation in technology and development from IIT Bombay. This led him to develop a particular interest in development of intermediate technologies with social impact. He is currently working on the design and optimization of modular storage technologies to mitigate value chain losses in the perishable agricultural commodities. His transdisciplinary research integrates technology design and dissemination through participation of communities with the goal of ‘End to End Innovation’.<br><br>
       📧 <a href="mailto:Vadgave.nilesh56@gmail.com">Vadgave.nilesh56@gmail.com</a> &nbsp;|&nbsp;
@@ -151,5 +224,3 @@
 
 </body>
 </html>
-
-
