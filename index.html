@@ -166,16 +166,30 @@
             gap: 15px;
             flex-wrap: nowrap;
         }
-        .sketches-container img, .development-container img {
-            width: 33.33%;
-            max-width: 380px;
+        .sketches-container img, .development-container .image-item img {
+            width: 100%;
             height: 250px;
             object-fit: contain;
             border-radius: 8px;
-            margin: 10px 0;
             background: #fff;
             padding: 5px;
             cursor: pointer;
+        }
+        .image-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 30%;
+            max-width: 380px;
+        }
+        .image-caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #1f2937;
+            margin: 5px 0;
+            padding: 0 5px;
+            line-height: 1.3;
         }
         .image-modal {
             display: none;
@@ -305,7 +319,7 @@
                 gap: 15px;
                 flex-wrap: wrap;
             }
-            .sketches-container img, .development-container img {
+            .sketches-container img, .development-container .image-item img {
                 width: 100%;
                 max-width: none;
                 height: 200px;
@@ -313,6 +327,12 @@
                 background: #fff;
                 padding: 5px;
                 cursor: pointer;
+            }
+            .image-item {
+                min-width: 100%;
+            }
+            .image-caption {
+                font-size: 0.75rem;
             }
             header h1 {
                 font-size: 2rem;
@@ -418,18 +438,38 @@
                 <h3>Teaching</h3>
                 <p>As part of my Teaching Assistant responsibilities at IIT Bombay, I organized and delivered classes on Advanced Statistics, Biofuel Policies, and Appropriate Technology. Additionally, I conducted lectures on the Techno-Economic Feasibility Analysis of engineering projects for both domestic and international master's and PhD students. With a keen interest in leadership and communication, I also led a series of lectures on scientific writing and business communication.</p>
                 <div class="development-container">
-                    <img src="images/classroom_1.jpg" alt="baif" onclick="showImageModal(this.src)" />
-                    <img src="images/vnmkv_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <img src="images/techwrite_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="image-item">
+                        <img src="images/classroom_1.jpg" alt="baif" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Delivering lecture on Advanced Statistics to master's students.</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/vnmkv_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Conducting session on Biofuel Policies at VN MKV.</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/techwrite_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Workshop on scientific writing and communication skills.</div>
+                    </div>
                 </div>
                 <div class="development-container">
-                    <img src="images/tea_lec.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <img src="images/profpres_teach2.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <img src="images/summerschool-teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="image-item">
+                        <img src="images/tea_lec.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Lecture on Appropriate Technology for PhD scholars.</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/profpres_teach2.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Presenting techno-economic analysis in class.</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/summerschool-teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Teaching international students during summer school.</div>
+                    </div>
                 </div>
                 <div class="development-container">
-                    <img src="images/GroupPhoto02.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <div class="image-item">
+                        <img src="images/GroupPhoto02.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                        <div class="image-caption">Group photo with students after a successful lecture series.</div>
+                    </div>
                 </div>
             </div>
             <a href="#" class="bottom-right-back" onclick="showSection('main-page')">Back to Home</a>
@@ -600,13 +640,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
