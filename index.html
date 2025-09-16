@@ -63,7 +63,6 @@
         .social-links a:hover {
             text-decoration: underline;
         }
-        /* REPLACED SECTION START: Persona container styles */
         .personas {
             display: flex;
             justify-content: space-between;
@@ -73,7 +72,7 @@
         .persona-container {
             flex: 1;
             max-width: 280px;
-            height: 400px; /* Fixed height for consistency */
+            height: 400px;
             background: rgba(255, 255, 255, 0.95);
             color: #1f2937;
             padding: 0;
@@ -90,37 +89,36 @@
         }
         .persona-image-wrapper {
             position: relative;
-            height: 55%; /* 55% of container for image */
+            height: 55%;
             overflow: hidden;
         }
         .persona-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Fill the 55% height */
-            border-radius: 8px 8px 0 0; /* Rounded top corners */
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
         }
         .persona-header {
-            height: 23px; /* 110% of 1.3rem (20.8px * 1.1) */
-            background: rgba(255, 255, 255, 0.8); /* White strip with 80% opacity */
+            height: 23px;
+            background: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .persona-header h2 {
-            font-family: 'Inter', sans-serif; /* Match document font */
+            font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             margin: 0;
             text-align: center;
-            color: #1f2937; /* Match container text color */
+            color: #1f2937;
         }
         .persona-text {
-            height: calc(45% - 23px); /* 45% minus header height */
+            height: calc(45% - 23px);
             padding: 10px;
             font-size: 0.85rem;
             line-height: 1.4;
-            overflow-y: auto; /* Scroll if text overflows */
+            overflow-y: auto;
         }
-        /* REPLACED SECTION END */
         .detailed-section {
             background: rgba(255, 255, 255, 0.9);
             color: #1f2937;
@@ -166,29 +164,34 @@
             gap: 15px;
             flex-wrap: nowrap;
         }
-        .sketches-container img, .development-container .image-item img {
+        .teaching-image-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: nowrap;
+        }
+        .teaching-image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33.33%;
+            max-width: 380px;
+        }
+        .sketches-container img, .development-container img, .teaching-image-container img {
             width: 100%;
             height: 250px;
             object-fit: contain;
             border-radius: 8px;
+            margin: 10px 0;
             background: #fff;
             padding: 5px;
             cursor: pointer;
-        }
-        .image-item {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 30%;
-            max-width: 380px;
         }
         .image-caption {
             text-align: center;
             font-size: 0.8rem;
             color: #1f2937;
             margin: 5px 0;
-            padding: 0 5px;
             line-height: 1.3;
         }
         .image-modal {
@@ -286,17 +289,17 @@
             }
             .persona-container {
                 max-width: 100%;
-                height: 350px; /* Adjusted height for mobile */
+                height: 350px;
             }
             .persona-header {
-                height: 19.8px; /* 110% of 1.1rem (17.6px * 1.1) */
-                background: rgba(255, 255, 255, 0.8); /* Maintain transparency */
+                height: 19.8px;
+                background: rgba(255, 255, 255, 0.8);
             }
             .persona-header h2 {
-                font-size: 1.1rem; /* Smaller font for mobile */
+                font-size: 1.1rem;
             }
             .persona-text {
-                height: calc(45% - 19.8px); /* Adjust for header height */
+                height: calc(45% - 19.8px);
                 font-size: 0.8rem;
                 padding: 8px;
             }
@@ -314,12 +317,12 @@
                 max-width: none;
                 height: 200px;
             }
-            .sketches-container, .development-container {
+            .sketches-container, .development-container, .teaching-image-container {
                 flex-direction: column;
                 gap: 15px;
                 flex-wrap: wrap;
             }
-            .sketches-container img, .development-container .image-item img {
+            .sketches-container img, .development-container img, .teaching-image-container img {
                 width: 100%;
                 max-width: none;
                 height: 200px;
@@ -328,8 +331,9 @@
                 padding: 5px;
                 cursor: pointer;
             }
-            .image-item {
-                min-width: 100%;
+            .teaching-image-item {
+                width: 100%;
+                max-width: none;
             }
             .image-caption {
                 font-size: 0.75rem;
@@ -432,42 +436,42 @@
                 <div class="button-container">
                     <div class="instruction">Click for article on Climate Smart storage structures for Onions</div>
                     <a href="popups/ETHZurich_Blogpost.html" class="popup-button">Open Article</a>
-                <div class="instruction">Click for news on winning National Hackathon by our team</div>
+                    <div class="instruction">Click for news on winning National Hackathon by our team</div>
                     <a href="https://acr.iitbombay.org/innovation-in-agri-tech-iit-bombays-c-tara-team-triumphs-in-national-grand-onion-challenge/" class="popup-button">Open News article</a>
                 </div>
                 <h3>Teaching</h3>
                 <p>As part of my Teaching Assistant responsibilities at IIT Bombay, I organized and delivered classes on Advanced Statistics, Biofuel Policies, and Appropriate Technology. Additionally, I conducted lectures on the Techno-Economic Feasibility Analysis of engineering projects for both domestic and international master's and PhD students. With a keen interest in leadership and communication, I also led a series of lectures on scientific writing and business communication.</p>
-                <div class="development-container">
-                    <div class="image-item">
-                        <img src="images/classroom_1.jpg" alt="baif" onclick="showImageModal(this.src)" />
+                <div class="teaching-image-container">
+                    <div class="teaching-image-item">
+                        <img src="images/classroom_1.jpg" alt="Classroom Teaching" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Delivering lecture on Advanced Statistics to master's students.</div>
                     </div>
-                    <div class="image-item">
-                        <img src="images/vnmkv_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="teaching-image-item">
+                        <img src="images/vnmkv_teach.jpeg.jpg" alt="Biofuel Policy Session" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Conducting session on Biofuel Policies at VN MKV.</div>
                     </div>
-                    <div class="image-item">
-                        <img src="images/techwrite_teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="teaching-image-item">
+                        <img src="images/techwrite_teach.jpeg.jpg" alt="Scientific Writing Workshop" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Workshop on scientific writing and communication skills.</div>
                     </div>
                 </div>
-                <div class="development-container">
-                    <div class="image-item">
-                        <img src="images/tea_lec.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                <div class="teaching-image-container">
+                    <div class="teaching-image-item">
+                        <img src="images/tea_lec.jpeg.jpg" alt="Appropriate Technology Lecture" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Lecture on Appropriate Technology for PhD scholars.</div>
                     </div>
-                    <div class="image-item">
-                        <img src="images/profpres_teach2.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="teaching-image-item">
+                        <img src="images/profpres_teach2.jpeg.jpg" alt="Techno-Economic Presentation" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Presenting techno-economic analysis in class.</div>
                     </div>
-                    <div class="image-item">
-                        <img src="images/summerschool-teach.jpeg.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                    <div class="teaching-image-item">
+                        <img src="images/summerschool-teach.jpeg.jpg" alt="Summer School Teaching" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Teaching international students during summer school.</div>
                     </div>
                 </div>
-                <div class="development-container">
-                    <div class="image-item">
-                        <img src="images/GroupPhoto02.jpg" alt="pocra" onclick="showImageModal(this.src)" />
+                <div class="teaching-image-container">
+                    <div class="teaching-image-item">
+                        <img src="images/GroupPhoto02.jpg" alt="Group Photo" onclick="showImageModal(this.src)" />
                         <div class="image-caption">Group photo with students after a successful lecture series.</div>
                     </div>
                 </div>
@@ -607,10 +611,9 @@
             }
         }
 
-        // Handle hover effect for persona containers
         document.querySelectorAll('.persona-container').forEach(container => {
             container.addEventListener('mouseenter', () => {
-                hasHovered = true; // Set flag on first hover
+                hasHovered = true;
                 document.querySelectorAll('.persona-container').forEach(other => {
                     if (other !== container) {
                         other.style.opacity = '0.5';
@@ -626,7 +629,6 @@
                     });
                 }
             });
-            // Add keyboard support for accessibility
             container.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
@@ -635,7 +637,6 @@
             });
         });
 
-        // Add event listener for Escape key
         document.addEventListener('keydown', handleEscape);
     </script>
 </body>
