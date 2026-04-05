@@ -3,672 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nilesh Vadgave - Portfolio</title>
+    <title>Nilesh Vadgave | Academic, Entrepreneur, Artist & Development Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box; /* Ensure padding and borders are included in width */
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --glass: rgba(255, 255, 255, 0.95);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('images/BG2.jpg');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('images/BG2.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #f5f2f2;
-            overscroll-behavior: none;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .section {
-            display: none;
-            min-height: 100vh; /* Ensure section is visible */
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-weight: 700;
         }
-        .section.active {
-            display: block;
-        }
+
+        /* Layout Components */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            min-height: 50px; /* Ensure container is visible */
+            padding: 0 24px;
         }
+
+        .section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            padding: 80px 0;
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header & Hero */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 100px 20px 60px;
         }
+
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 1.25rem;
-        }
-        .about {
-            background: rgba(255, 255, 255, 0.9);
-            color: #1f2937;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-        .about h2 {
-            font-size: 1.75rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: -2px;
             margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .about p {
-            font-size: 1rem;
-            line-height: 1.6;
+
+        header p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
         }
-        .social-links a {
-            color: #1e3a8a;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1rem;
+
+        /* About Section */
+        .about-card {
+            background: var(--glass);
+            color: var(--text-dark);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        .social-links a:hover {
-            text-decoration: underline;
+
+        .about-card h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
         }
-        .personas {
+
+        .about-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* Social Icons */
+        .social-links {
+            margin-top: 30px;
             display: flex;
-            justify-content: space-between;
             gap: 20px;
-            flex-wrap: nowrap;
-            max-width: 100%;
         }
-        .persona-container {
-            flex: 1;
-            max-width: 280px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #1f2937;
-            padding: 0;
-            border-radius: 8px;
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .social-links img { width: 20px; height: 20px; }
+
+        /* Persona Grid */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .persona-card {
+            background: var(--glass);
+            border-radius: 20px;
+            overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+            transition: var(--transition);
+            height: 480px;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            color: var(--text-dark);
+            border: 1px solid transparent;
         }
-        .persona-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        .persona-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent);
         }
-        .persona-image-wrapper {
-            position: relative;
+
+        .persona-img {
             height: 55%;
+            position: relative;
             overflow: hidden;
         }
-        .persona-image-wrapper img {
+
+        .persona-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px 8px 0 0;
+            transition: transform 0.6s ease;
         }
-        .persona-header {
-            height: 23px;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .persona-header h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            margin: 0;
-            text-align: center;
-            color: #1f2937;
-        }
-        .persona-text {
-            height: calc(45% - 23px);
-            padding: 10px;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            overflow-y: auto;
-        }
-        .detailed-section {
-            background: rgba(255, 255, 255, 0.9);
-            color: #1f2937;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            overflow: auto; /* Allow scrolling if content overflows */
-        }
-        .detailed-section h2 {
-            font-size: 1.75rem;
-            margin-bottom: 15px;
-        }
-        .detailed-section p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .detailed-section .theatre-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-        .detailed-section .theatre-container img {
-            width: 50%;
-            max-width: 500px;
-            height: 300px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: #fff;
-            padding: 5px;
-        }
-        .detailed-section .theatre-container iframe {
-            width: 50%;
-            max-width: 500px;
-            height: 300px;
-            border: none;
-            border-radius: 8px;
-        }
-        .sketches-container, .development-container, .teaching-image-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: nowrap;
-            max-width: 100%;
-            overflow: auto; /* Allow scrolling instead of hiding overflow */
-        }
-        .teaching-image-item {
+
+        .persona-card:hover .persona-img img { transform: scale(1.1); }
+
+        .persona-content {
+            padding: 25px;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 33.33%;
+            justify-content: flex-start;
         }
-        .sketches-container img, .development-container img, .teaching-image-container img {
-            width: 100%;
-            max-width: 100%;
-            height: 250px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin: 10px 0;
+
+        .persona-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .persona-content p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Detailed Page Styling */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .content-wrap {
+            background: var(--glass);
+            color: var(--text-dark);
+            padding: 60px;
+            border-radius: 32px;
+        }
+
+        .content-wrap h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary); }
+        .content-wrap h3 { font-size: 1.4rem; color: var(--accent); margin: 30px 0 15px; }
+
+        /* Media Grids */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .media-item {
+            border-radius: 16px;
+            overflow: hidden;
             background: #fff;
-            padding: 5px;
+            padding: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .media-item:hover { transform: scale(1.03); }
+
+        .media-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
             cursor: pointer;
         }
-        .image-caption {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #1f2937;
-            margin: 5px 0;
-            line-height: 1.3;
+
+        .video-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 20px 0 40px;
         }
-        .image-modal {
+
+        iframe {
+            width: 100%;
+            height: 315px;
+            border-radius: 16px;
+            border: none;
+        }
+
+        /* Buttons for External Links */
+        .action-btns {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-filled {
+            background: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-filled:hover { background: #2563eb; transform: translateY(-2px); }
+
+        /* Modal */
+        .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
         }
-        .image-modal img {
-            max-width: 90%;
-            max-height: 100vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        .image-modal .back-button {
+
+        .modal img { max-width: 90%; max-height: 85vh; border-radius: 8px; }
+
+        .close-modal {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background: #1e3a8a;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .image-modal .back-button:hover {
-            background: #3b82f6;
-        }
-        .back-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #1e3a8a;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .back-button:hover {
-            background: #3b82f6;
-        }
-        .bottom-right-back {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #1e3a8a;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            z-index: 1000;
-        }
-        .bottom-right-back:hover {
-            background: #3b82f6;
-        }
-        .button-container {
-            text-align: left;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .popup-button {
-            display: inline-block;
-            width: 200px;
-            height: 50px;
-            background-color: #4CAF50;
+            top: 30px; right: 40px;
             color: white;
-            text-align: center;
-            line-height: 50px;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            border-radius: 5px;
+            font-size: 40px;
+            cursor: pointer;
         }
-        .popup-button:hover {
-            background-color: #45a049;
-        }
-        .instruction {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 60px 20px;
             font-size: 0.9rem;
+            color: #64748b;
         }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            .video-container { grid-template-columns: 1fr; }
+            .content-wrap { padding: 40px 24px; }
+        }
+
         @media (max-width: 768px) {
-            .personas {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .persona-container {
-                max-width: 100%;
-                height: 350px;
-            }
-            .persona-header {
-                height: 19.8px;
-                background: rgba(255, 255, 255, 0.8);
-            }
-            .persona-header h2 {
-                font-size: 1.1rem;
-            }
-            .persona-text {
-                height: calc(45% - 19.8px);
-                font-size: 0.8rem;
-                padding: 8px;
-            }
-            .detailed-section .theatre-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .detailed-section .theatre-container img {
-                width: 100%;
-                max-width: none;
-                height: 200px;
-            }
-            .detailed-section .theatre-container iframe {
-                width: 100%;
-                max-width: none;
-                height: 200px;
-            }
-            .sketches-container, .development-container, .teaching-image-container {
-                flex-direction: column;
-                gap: 15px;
-                flex-wrap: wrap;
-                overflow: auto;
-            }
-            .sketches-container img, .development-container img, .teaching-image-container img {
-                width: 100%;
-                max-width: 100%;
-                height: 200px;
-                object-fit: contain;
-                background: #fff;
-                padding: 5px;
-                cursor: pointer;
-            }
-            .teaching-image-item {
-                width: 100%;
-                max-width: none;
-            }
-            .image-caption {
-                font-size: 0.75rem;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
+            .persona-grid { grid-template-columns: 1fr; }
+            .persona-card { height: auto; }
+            .persona-img { height: 250px; }
+            .social-links { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <div id="main-page" class="section active">
+
+    <div id="home" class="section active">
         <header class="container">
             <h1>Nilesh Vadgave</h1>
-            <p>Academic | Entrepreneur | Artist</p>
+            <p>Academic | Entrepreneur | Artist | Development Professional</p>
         </header>
+
         <div class="container">
-            <div class="about">
-                <h2>About Me</h2>
-                <p>Nilesh Vadgave is a PhD student, studying Technology Development and social entrepreneurship at the Indian Institute of Technology Bombay, India. He studied Mechanical Engineering for his bachelor and did Post Graduation in Technology & Development from IIT Bombay, which led him to develop a particular interest in development of intermediate technologies with social impact. He is currently working on design, optimization of modular storage technologies to mitigate value chain losses in the perishable agricultural commodities. His transdisciplinary research integrates Technology design and dissemination through participation of communities with the goal of ‘end to end innovation’. With the aim of Technology Development for social good, Nilesh has incorporated two businesses named 'O-Zone LLP' and 'CircularKheti' that works in climate change and food security. Along with this, Nilesh is active in Theatre, Poetry reading and training the future generations for sustainable and happy future!</p>
-                <div class="social-links" style="display: flex; align-items: center;">
-                    <a href="https://www.linkedin.com/in/nilesh-vadgave-100146196?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B6Rr7FEYGTNa7CUzT4JueHA%3D%3D" target="_blank" style="text-decoration: none; color: #000; display: flex; align-items: center; margin-right: 16px;">
-                        <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn Icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                        LinkedIn
+            <div class="about-card">
+                <h2>About My Journey</h2>
+                <p>Nilesh Vadgave is a PhD student at the Indian Institute of Technology Bombay, specializing in Technology Development and social entrepreneurship. With a background in Mechanical Engineering and a Post Graduation in Technology & Development, his work focuses on designing modular storage solutions to mitigate agricultural value chain losses. As a transdisciplinary researcher, he integrates technical design with community participation to achieve 'end-to-end innovation'. Nilesh is also the founder of 'O-Zone LLP' and 'CircularKheti', ventures dedicated to climate change and food security. Beyond academia and business, he is a passionate artist involved in theatre, poetry, and youth mentorship.</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nilesh-vadgave-100146196" target="_blank">
+                        <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn">
+                        Connect on LinkedIn
                     </a>
-                    <a href="https://www.instagram.com/nilesh_homosapien/" target="_blank" style="text-decoration: none; color: #000; display: flex; align-items: center;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon" style="width: 24px; height: 24px; margin-right: 8px;">
-                        Instagram
+                    <a href="https://www.instagram.com/nilesh_homosapien/" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                        Follow on Instagram
                     </a>
                 </div>
             </div>
-            <div class="personas">
-                <div class="persona-container" onclick="showSection('Academic')" role="button" tabindex="0">
-                    <div class="persona-image-wrapper">
-                        <img src="images/Researcher_DoGR.jpg" alt="Academic" />
-                    </div>
-                    <div class="persona-header">
+
+            <div class="persona-grid">
+                <div class="persona-card" onclick="nav('academic')">
+                    <div class="persona-img"><img src="images/Researcher_DoGR.jpg" alt="Academic"></div>
+                    <div class="persona-content">
                         <h2>Academic</h2>
-                    </div>
-                    <div class="persona-text">
-                        <p>Pioneering climate-smart solutions to optimize storage technologies for perishable goods, reducing value chain losses and enhancing food security through innovative research at IIT Bombay.</p>
+                        <p>Pioneering climate-smart solutions at IIT Bombay to optimize storage for perishable goods, reducing value chain losses through innovative research.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('Entrepreneur')" role="button" tabindex="0">
-                    <div class="persona-image-wrapper">
-                        <img src="images/IMG-20200702-WA0001.jpg" alt="Entrepreneur" />
-                    </div>
-                    <div class="persona-header">
+                <div class="persona-card" onclick="nav('entrepreneur')">
+                    <div class="persona-img"><img src="images/IMG-20200702-WA0001.jpg" alt="Entrepreneur"></div>
+                    <div class="persona-content">
                         <h2>Entrepreneur</h2>
-                    </div>
-                    <div class="persona-text">
-                        <p>Leading ventures like O-Zone LLP and Circular Kheti, driving innovation in sustainable agriculture and waste reduction to enhance farmers’ incomes and promote environmental resilience.</p>
+                        <p>Founder of Climatag Technologies and Circular Kheti, driving sustainable agriculture and economic resilience for farmers.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('Development Professional')" role="button" tabindex="0">
-                    <div class="persona-image-wrapper">
-                        <img src="images/DP_1.jpg" alt="Development Professional" />
-                    </div>
-                    <div class="persona-header">
+                <div class="persona-card" onclick="nav('devprof')">
+                    <div class="persona-img"><img src="images/DP_1.jpg" alt="Development Professional"></div>
+                    <div class="persona-content">
                         <h2>Development Professional</h2>
-                    </div>
-                    <div class="persona-text">
-                        <p>Trained Professional with experience to work in social sector pertaining to the development of bottom 80% of the Indian Population living in rural and semi-rural areas.</p>
+                        <p>Experienced professional working in the social sector for the development of rural and semi-rural populations across India.</p>
                     </div>
                 </div>
-                <div class="persona-container" onclick="showSection('artist')" role="button" tabindex="0">
-                    <div class="persona-image-wrapper">
-                        <img src="images/AboutSection.jpg" alt="Artist" />
-                    </div>
-                    <div class="persona-header">
+                <div class="persona-card" onclick="nav('artist')">
+                    <div class="persona-img"><img src="images/AboutSection.jpg" alt="Artist"></div>
+                    <div class="persona-content">
                         <h2>Artist</h2>
-                    </div>
-                    <div class="persona-text">
-                        <p>Exploring sustainability and human values through theatre, poetry, and sketches, with performances like “Saarang Uwaach” sparking dialogue on social and environmental issues.</p>
+                        <p>Exploring human values through theatre performances, poetry, and detailed pencil sketches focused on sustainability.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
-        </footer>
     </div>
 
-    <div id="Academic" class="section">
+    <div id="academic" class="section">
         <div class="container">
-            <a href="#" class="back-button" onclick="showSection('main-page')">Back to Home</a>
-            <div class="detailed-section">
-                <h2>Academic</h2>
-                <h3>Climate Agnostic Storage Structures for Onion shelf-life preservation</h3>
-                <div class="development-container">
-                    <img src="images/Experiment.jpg" alt="Experiment Setup" onclick="showImageModal(this.src)" />
-                    <img src="images/framework.jpg" alt="Research Framework" onclick="showImageModal(this.src)" />
-                    <img src="images/research_1.jpg" alt="Research Activity" onclick="showImageModal(this.src)" />
+            <div class="page-header">
+                <a href="javascript:void(0)" class="back-btn" onclick="nav('home')">← Back to Portfolio</a>
+            </div>
+            <div class="content-wrap">
+                <h2>Academic & Research</h2>
+                <h3>Climate Agnostic Storage for Onion Preservation</h3>
+                <div class="media-grid">
+                    <div class="media-item"><img src="images/Experiment.jpg" alt="Experiment" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/framework.jpg" alt="Framework" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/research_1.jpg" alt="Research" onclick="openModal(this.src)"></div>
                 </div>
-                <p>India with a population of 1.35 billion is the second largest producer of onion in the world (~25 million MT in 2021). Over 70% of the onions are grown in the western and southern parts of the country. However, they are consumed across the country throughout the year. The imbalances in supply chain along with the high perishability of onions make the value chain inefficient. For the year-round consumption, onion is stored in traditional open ventilated storage structures where reported storage losses are in the range between 40 to 60%. The government is investing a large sum of money to stabilize the market prices through the construction of large sized open storage structures. Still, due to huge losses in traditional open structures, there is urgent need of affordable as well as scientific solution to this complex problem. With our research group at IIT Bombay, India, we addressed this issue by developing a storage technology with a transdisciplinary approach and came to very promising results.</p>
-                <p>Research has shown that onion can be stored with minimum storage losses at controlled conditions near ambient conditions with a specified combination of temperature, humidity, air flow rate and other factors. Cold storages near zero temperature do not work with Indian conditions for many reasons. One of those reasons is the high ambient temperatures and the subsequent higher cooling costs associated with cold storages. At Centre for Technology Alternatives for Rural Areas (CTARA)- IIT Bombay, we have developed a storage structure which keeps onion quality intact irrespective of the outside climatic conditions (hence called ‘Climate Agnostic!’). It circulates the conditioned air inside the storage enclosure to keep the inside conditions at specified levels. This ensures the reduction in unwanted weight loss of onion, its sprouting and rotting. It optimizes the system performance by allowing fresh air to mix with the recirculated air when outside conditions are closer to the storage conditions.</p>
-                <div class="button-container">
-                    <div class="instruction">Click for article on Climate Smart storage structures for Onions</div>
-                    <a href="popups/ETHZurich_Blogpost.html" class="popup-button">Open Article</a>
-                    <div class="instruction">Click for news on winning National Hackathon by our team</div>
-                    <a href="https://acr.iitbombay.org/innovation-in-agri-tech-iit-bombays-c-tara-team-triumphs-in-national-grand-onion-challenge/" class="popup-button">Open News article</a>
+                <p>In India, onion storage losses range from 40-60% in traditional structures. At CTARA, IIT Bombay, we developed 'Climate Agnostic' structures that circulate conditioned air to maintain quality irrespective of external weather. This scientific approach reduces rotting and sprouting, ensuring a stable supply chain for one of India's most vital crops.</p>
+                
+                <div class="action-btns">
+                    <a href="popups/ETHZurich_Blogpost.html" class="btn-filled">Read ETH Zurich Blog</a>
+                    <a href="https://acr.iitbombay.org/innovation-in-agri-tech-iit-bombays-c-tara-team-triumphs-in-national-grand-onion-challenge/" target="_blank" class="btn-filled">National Hackathon News</a>
                 </div>
-                <h3>Teaching</h3>
-                <p>As part of my Teaching Assistant responsibilities at IIT Bombay, I organized and delivered classes on Advanced Statistics, Biofuel Policies, and Appropriate Technology. Additionally, I conducted lectures on the Techno-Economic Feasibility Analysis of engineering projects for both domestic and international master's and PhD students. With a keen interest in leadership and communication, I also led a series of lectures on scientific writing and business communication.</p>
-                <div class="teaching-image-container">
-                    <div class="teaching-image-item">
-                        <img src="images/classroom_1.jpg" alt="Classroom Teaching" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Delivering lecture on Advanced Statistics to master's students.</div>
-                    </div>
-                    <div class="teaching-image-item">
-                        <img src="images/vnmkv_teach.jpeg.jpg" alt="Biofuel Policy Session" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Conducting session on Biofuel Policies at VN MKV.</div>
-                    </div>
-                    <div class="teaching-image-item">
-                        <img src="images/techwrite_teach.jpeg.jpg" alt="Scientific Writing Workshop" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Workshop on scientific writing and communication skills.</div>
-                    </div>
-                </div>
-                <div class="teaching-image-container">
-                    <div class="teaching-image-item">
-                        <img src="images/tea_lec.jpeg.jpg" alt="Appropriate Technology Lecture" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Lecture on Appropriate Technology for PhD scholars.</div>
-                    </div>
-                    <div class="teaching-image-item">
-                        <img src="images/profpres_teach2.jpeg.jpg" alt="Techno-Economic Presentation" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Presenting techno-economic analysis in class.</div>
-                    </div>
-                    <div class="teaching-image-item">
-                        <img src="images/summerschool-teach.jpeg.jpg" alt="Summer School Teaching" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Teaching international students during summer school.</div>
-                    </div>
-                </div>
-                <div class="teaching-image-container">
-                    <div class="teaching-image-item">
-                        <img src="images/GroupPhoto02.jpg" alt="Group Photo" onclick="showImageModal(this.src)" />
-                        <div class="image-caption">Group photo with students after a successful lecture series.</div>
-                    </div>
+
+                <h3>Teaching & Mentorship</h3>
+                <p>As a Teaching Assistant at IIT Bombay, I've led sessions on Advanced Statistics, Biofuel Policies, and Techno-Economic Feasibility for PhD and Master's scholars globally.</p>
+                <div class="media-grid">
+                    <div class="media-item"><img src="images/classroom_1.jpg" alt="Teaching" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/vnmkv_teach.jpeg.jpg" alt="Policy" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/techwrite_teach.jpeg.jpg" alt="Workshop" onclick="openModal(this.src)"></div>
                 </div>
             </div>
-            <a href="#" class="bottom-right-back" onclick="showSection('main-page')">Back to Home</a>
         </div>
-        <footer>
-            <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
-        </footer>
     </div>
 
-    <div id="Entrepreneur" class="section">
+    <div id="entrepreneur" class="section">
         <div class="container">
-            <a href="#" class="back-button" onclick="showSection('main-page')">Back to Home</a>
-            <div class="detailed-section">
-                <h2>Entrepreneur</h2>
+            <div class="page-header">
+                <a href="javascript:void(0)" class="back-btn" onclick="nav('home')">← Back to Portfolio</a>
+            </div>
+            <div class="content-wrap">
+                <h2>Entrepreneurship</h2>
                 <h3>CLIMATAG TECHNOLOGIES PVT LTD</h3>
-                <img src="images/Climatag_LV.jpg" alt="O-Zone LLP" />
-                <p>We are a team of interdisciplinary researchers from IIT Bombay closely working on the problems in Onion value chain for last 5+ years. With the strong technical and research skills, we are innovating in the field of affordable and efficient end to end agricultural value chain solutions through waste reduction with the aim to enhance farmers’ incomes. Comprising interdisciplinary researchers from Centre for Technology Alternatives for Rural Areas (CTARA) at IIT Bombay, our team has rigorously delved into the complexities of the onion value chain for over 5 years. Leveraging advanced technical and research skills, we are actively engaged in pioneering innovations within the realm of agricultural value chains. Our primary focus lies in developing cutting-edge, end-to-end solutions designed to enhance efficiency and affordability while minimizing waste. Through meticulous analysis and implementation of technical strategies, we aim to significantly augment the income prospects for farmers.</p>
-                <div class="social-links" style="display: flex; align-items: center;">
-                    <a href="https://www.climatag.in" target="_blank" style="text-decoration: none; color: #000; display: flex; align-items: center; margin-right: 16px;">
-                        <img src="images/Climatag_LV.jpg" style="width: 24px; height: 24px; margin-right: 8px;">
-                        Click to know more..
-                    </a>
-                </div>
-                <h3>Circular Kheti</h3>
-                <img src="images/Logo_Ck_2.jpg" alt="Circular Kheti" />
-                <p>Embracing Change for a Sustainable Future: Join Our Effort to Transform Agriculture and Health! In a world where climate change is reshaping our environment and increasing risks in farming daily, the need for a shift is more critical than ever. Urban lifestyles and dietary habits are evolving, impacting the health landscape of our nation, leaving both farmers and consumers at a loss. Our solution? The synergy of Ancient Wisdom and Modern Knowledge! A dedicated team of farmers and engineer-turned-farmers is passionately working to tackle the agrarian crisis and promote healthier urban living. Through innovative experiments in sustainable farming, risk mitigation, and optimizing the farmer-to-consumer supply chain, we aim to minimize waste and create a WIN-WIN scenario for us, farmers, and the environment.</p>
+                <img src="images/Climatag_LV.jpg" alt="Climatag" style="width: 100%; border-radius: 20px; margin-bottom: 20px;">
+                <p>A team of researchers from IIT Bombay addressing onion value chain complexities. We innovate end-to-end agricultural solutions designed to enhance efficiency and minimize waste at the source.</p>
+                <a href="https://www.climatag.in" target="_blank" class="btn-filled">Visit Climatag.in</a>
+
+                <h3 style="margin-top: 50px;">Circular Kheti</h3>
+                <img src="images/Logo_Ck_2.jpg" alt="Circular Kheti" style="max-width: 200px; margin-bottom: 20px;">
+                <p>Synergizing Ancient Wisdom with Modern Knowledge to transform agriculture. We focus on sustainable farming, risk mitigation, and optimizing the direct supply chain from farmers to urban consumers.</p>
             </div>
-            <a href="#" class="bottom-right-back" onclick="showSection('main-page')">Back to Home</a>
         </div>
-        <footer>
-            <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
-        </footer>
     </div>
 
-    <div id="Development Professional" class="section">
+    <div id="devprof" class="section">
         <div class="container">
-            <a href="#" class="back-button" onclick="showSection('main-page')">Back to Home</a>
-            <div class="detailed-section">
-                <h2>Development Professional</h2>
-                <p>As a Part-time Researcher and Team Lead for the Post-Harvest component of the Nanaji Deshmukh Krishi Sanjivanee Prakalp (Project on Climate Resilient Agriculture - PoCRA) from July 2021 to August 2022, I contributed to a World Bank and Government of Maharashtra joint initiative aimed at developing climate-resilient strategies for smallholder farmers in Maharashtra's Marathwada region. My role involved coordinating a team of doctoral and master's researchers, planning comprehensive research frameworks, conducting field surveys, performing detailed data analysis, and preparing reports. I also pitched findings and recommendations to government stakeholders, ensuring actionable insights for sustainable agricultural practices in a hybrid Mumbai Metropolitan Region setup.</p>
-                <div class="development-container">
-                    <img src="images/SrijanFellowhip.jpg" alt="baif" onclick="showImageModal(this.src)" />
-                    <img src="images/withtribal.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <img src="images/education_2.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                </div>
-                <p>During my Full-time Summer Researcher position at the Sheti Pariwar Kalyan Sanstha in collaboration with IIT Bombay from May to July 2019 in Palaskhel Village, Atpadi, Sangli, Maharashtra, I immersed in rural fieldwork. I conducted Participatory Rural Appraisal (PRA) activities for village surveys and collected data via KOBO Collect toolbox across agriculture, water, energy, livelihood, migration, health, and education sectors. Additionally, I led two directed researches: a critique of the Soil Health Card Scheme through case study data collection, analysis, and mapping to assess efficacy; and an analysis of farmers' diaries spanning 10 years for data cleaning, visualization, and developing a decision support system to optimize farm and off-farm expenditures.
-In the Buddha Fellowship's Rural Immersion Program, I lived with a tribal community in the Dang district, conducting in-depth analysis of household cash flows to identify economic vulnerabilities. My focus was on creating sustainable livelihoods by developing an inclusive value-addition model for locally grown Nagali (finger millet), transforming it into marketable products. This initiative aimed to enhance income generation, promote self-reliance, and curb forced migration through community-driven enterprises. By integrating local resources and traditional knowledge with modern processing techniques, the program fostered long-term resilience, empowering tribal families to build economic stability amid environmental and social challenges.
-</p>
-                <div class="development-container">
-                    <img src="images/promunit.jpg" alt="baif" onclick="showImageModal(this.src)" />
-                    <img src="images/education.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                    <img src="images/BAIF.jpg" alt="pocra" onclick="showImageModal(this.src)" />
-                </div>
-                <p>As Associate Programme Manager at BAIF, I spearheaded need assessments using Participatory Rural Appraisal (PRA) and baseline surveys to formulate 5-10 year strategic development plans for rural communities in Madhya Pradesh's tribal belts, emphasizing health, education, and livelihoods. I coordinated and monitored multiple programs to ensure intervention sustainability, promoting gainful self-employment for the rural poor. A key achievement was establishing Farmer Producer Companies (FPCs) for localized primary and secondary processing of farm produce, enhancing village self-reliance, resilience, and profit margins for smallholder farmers through collective bargaining and value chain integration.</p>
+            <div class="page-header">
+                <a href="javascript:void(0)" class="back-btn" onclick="nav('home')">← Back to Portfolio</a>
             </div>
-            <a href="#" class="bottom-right-back" onclick="showSection('main-page')">Back to Home</a>
+            <div class="content-wrap">
+                <h2>Development Professional</h2>
+                <p>Contributing to climate-resilient strategies for smallholder farmers through world-class initiatives and field research.</p>
+                
+                <div class="media-grid">
+                    <div class="media-item"><img src="images/SrijanFellowhip.jpg" alt="Srijan" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/withtribal.jpg" alt="Fieldwork" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/education_2.jpg" alt="Training" onclick="openModal(this.src)"></div>
+                </div>
+
+                <h3>Key Milestones</h3>
+                <ul>
+                    <li><strong>PoCRA (Project on Climate Resilient Agriculture):</strong> Lead researcher for post-harvest components in Maharashtra's Marathwada region.</li>
+                    <li><strong>Buddha Fellowship:</strong> Lived with tribal communities in Dang to develop inclusive value-addition models for Finger Millet (Nagali).</li>
+                    <li><strong>BAIF Development Research Foundation:</strong> Strategic development planning for tribal belts in Madhya Pradesh, establishing Farmer Producer Companies (FPCs).</li>
+                </ul>
+
+                <div class="media-grid">
+                    <div class="media-item"><img src="images/promunit.jpg" alt="Unit" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/education.jpg" alt="Study" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/BAIF.jpg" alt="Impact" onclick="openModal(this.src)"></div>
+                </div>
+            </div>
         </div>
-        <footer>
-            <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
-        </footer>
     </div>
 
     <div id="artist" class="section">
         <div class="container">
-            <a href="#" class="back-button" onclick="showSection('main-page')">Back to Home</a>
-            <div class="detailed-section">
-                <h2>Artist</h2>
-                <h3>Theatre</h3>
-                <p>Nilesh performed in the inter-department competition theatre play "Saarang Uwaach" at IIT Bombay in 2019. Play depicts the arrival of immortal Ashwathama in contemporary world and his struggles with the depreciating ethics and values in today's world. he roams the earth with wounded forehead and tries to find the human values that he had not long seen after Dwaparyuga.</p>
-                <div class="theatre-container">
-                    <img src="images/Saarang Uwaach.jpg" alt="Saarang Uwaach" />
-                    <iframe src="https://www.youtube.com/embed/IvHfNn9juUw?si=htC5243lNAupPjWX" title="Saarang Uwaach Video" allowfullscreen></iframe>
+            <div class="page-header">
+                <a href="javascript:void(0)" class="back-btn" onclick="nav('home')">← Back to Portfolio</a>
+            </div>
+            <div class="content-wrap">
+                <h2>Creative Expression</h2>
+                <h3>Theatre Performance</h3>
+                
+                <div class="video-container">
+                    <div>
+                        <p><strong>Saarang Uwaach (2019):</strong> Portraying the struggle of immortal Ashwathama in a contemporary world devoid of values.</p>
+                        <iframe src="https://www.youtube.com/embed/IvHfNn9juUw" title="Saarang Uwaach"></iframe>
+                    </div>
+                    <div>
+                        <img src="images/Saarang Uwaach.jpg" alt="Saarang" style="height:315px; width:100%; object-fit:cover; border-radius:16px;">
+                    </div>
                 </div>
-                <p>In "Taabir-E-Shanakht," The play performed at the Performing Arts Festival (PAF) of IIT Bombay in February 2020 revolves around themes of truth and illusion, capability, and inheritance. Nilesh portrayed the character of a prince exiled for 20 years from his kingdom. From the jail where he is imprisoned, he asks questions about freedom, free will, and destiny. His tragic life raises profound questions for the society we live in.</p>
-                <div class="theatre-container">
-                    <img src="images/tabberShankaht.jpg" alt="Tabir-E-Shanakht" />
-                    <iframe src="https://www.youtube.com/embed/WNBP7Cf7Uhw?si=i_YbTHKbClTntSLp" title="Tabir-E-Shanakht Video" allowfullscreen></iframe>
+
+                <div class="video-container">
+                    <div>
+                        <p><strong>Taabir-E-Shanakht (2020):</strong> Portraying an exiled prince questioning freedom and destiny from his prison cell.</p>
+                        <iframe src="https://www.youtube.com/embed/WNBP7Cf7Uhw" title="Taabir-E-Shanakht"></iframe>
+                    </div>
+                    <div>
+                        <img src="images/tabberShankaht.jpg" alt="Taabir" style="height:315px; width:100%; object-fit:cover; border-radius:16px;">
+                    </div>
                 </div>
-                <p>Sunwayee (The Trial) showcases the life of Police Inspector Vijay Srivastava (played by Nilesh), who believes in "Duty before everything!" However, as the trial progresses, the truth hidden behind the curtains is revealed, exposing the shallow and weak persona of the Police Inspector. But at what cost? His own son? The play revolves around the themes of patriotism, nationalism, and moral dilemmas.</p>
-                <div class="theatre-container">
-                    <img src="images/theatre.jpg" alt="Threads of Tradition" />
-                    <iframe src="https://www.youtube.com/embed/C3yp-rr8rD4?si=vqiQ1hPMwTcWFe1G" title="Sunwayee Video" allowfullscreen></iframe>
+
+                <h3>Sketches & Art</h3>
+                <p>Since childhood, I have used pencil sketching to capture human emotion. I have a particular interest in hyper-detailing eyes and facial expressions.</p>
+                <div class="media-grid">
+                    <div class="media-item"><img src="images/eye_1.jpg" alt="Sketch" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/Anuraj2.jpg" alt="Sketch" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/kundan-sketch.jpeg" alt="Sketch" onclick="openModal(this.src)"></div>
+                    <div class="media-item"><img src="images/eye_sketch.jpeg" alt="Sketch" onclick="openModal(this.src)"></div>
                 </div>
-                <h3>Sketches and Cartoons</h3>
-                <p>I prepare pencil sketches. It’s my hobby since childhood. I had elementary and intermediate training in high school but couldn’t pursue the advance hyper sketching then after. I like to draw human faces and detailed facial elements like eyes. Here are few of the sketches I made for my friends and loved ones.</p>
-                <div class="sketches-container">
-                    <img src="images/eye_1.jpg" alt="Saarang Uwaach" onclick="showImageModal(this.src)" />
-                    <img src="images/Anuraj2.jpg" alt="Tabir-E-Shanakht" onclick="showImageModal(this.src)" />
-                    <img src="images/kundan-sketch.jpeg" alt="Threads of Tradition" onclick="showImageModal(this.src)" />
-                    <img src="images/eye_sketch.jpeg" alt="Threads of Tradition" onclick="showImageModal(this.src)" />
-                </div>
-                </div>
-            <a href="#" class="bottom-right-back" onclick="showSection('main-page')">Back to Home</a>
+            </div>
         </div>
-        <footer>
-            <p>© 2025 Nilesh Vadgave. All rights reserved.</p>
-        </footer>
     </div>
 
-    <div id="imageModal" class="image-modal" role="dialog" aria-label="Image Modal">
-        <a href="#" class="back-button" onclick="hideImageModal()">Back</a>
-        <img id="modalImage" src="" alt="Enlarged Image" />
+    <div id="imgModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="">
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nilesh Vadgave. All rights reserved. | IIT Bombay</p>
+        </div>
+    </footer>
 
     <script>
-        let hasHovered = false; // Flag to track first hover
-
-        function showSection(sectionId) {
-            console.log('Attempting to show section:', sectionId); // Debug log
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-                console.log('Removed active from:', section.id); // Debug log
+        function nav(sectionId) {
+            document.querySelectorAll('.section').forEach(s => {
+                s.classList.remove('active');
             });
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.classList.add('active');
-                console.log('Added active to:', sectionId); // Debug log
-            } else {
-                console.error('Section not found:', sectionId);
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const target = document.getElementById(sectionId);
+            target.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function showImageModal(src) {
-            console.log('Showing image modal with src:', src); // Debug log
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = src;
-            modal.style.display = 'flex';
-            document.addEventListener('keydown', handleEscape);
+        function openModal(src) {
+            const modal = document.getElementById("imgModal");
+            const modalImg = document.getElementById("modalImg");
+            modal.style.display = "flex";
+            modalImg.src = src;
         }
 
-        function hideImageModal() {
-            console.log('Hiding image modal'); // Debug log
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
-            document.removeEventListener('keydown', handleEscape);
+        function closeModal() {
+            document.getElementById("imgModal").style.display = "none";
         }
 
-        function handleEscape(event) {
-            if (event.key === 'Escape') {
-                const modal = document.getElementById('imageModal');
-                if (modal.style.display === 'flex') {
-                    hideImageModal();
-                } else {
-                    showSection('main-page');
-                }
-            }
-        }
-
-        document.querySelectorAll('.persona-container').forEach(container => {
-            container.addEventListener('mouseenter', () => {
-                hasHovered = true;
-                document.querySelectorAll('.persona-container').forEach(other => {
-                    if (other !== container) {
-                        other.style.opacity = '0.5';
-                        other.style.filter = 'blur(2px)';
-                    }
-                });
-            });
-            container.addEventListener('mouseleave', () => {
-                if (hasHovered) {
-                    document.querySelectorAll('.persona-container').forEach(other => {
-                        other.style.opacity = '1';
-                        other.style.filter = 'none';
-                    });
-                }
-            });
-            container.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    container.click();
-                }
-            });
-        });
-
-        document.addEventListener('keydown', handleEscape);
-
-        // Ensure main-page is visible on load
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Page loaded, ensuring main-page is active');
-            showSection('main-page');
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeModal();
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
